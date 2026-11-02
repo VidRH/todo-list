@@ -17,9 +17,17 @@ const errorMessage  = document.getElementById('error-message') as HTMLParagraphE
 
 
 
+
+
+
+
+
+
+
+
 const addTodo = (text:string):void => {
   const newTodo: Todo = {
-    id: Date.now(),  //
+    id: Date.now(),
     text: text,
     completed: false,
   }
@@ -55,7 +63,7 @@ todoForm.addEventListener('submit', (event: Event) => {
   const text = todoInput.value.trim();
 
   if (text !== '') {
-    addTodo(text)
+    addTodo(text);
     todoInput.value = '' //clears the input field after adding 
   }
 })
@@ -70,3 +78,30 @@ const removeTodo = (id:number):void => {
   todos = todos.filter(todo => todo.id !== id)
   renderTodos()
 }
+
+
+
+// Option 6: Due Date for Todos:
+// Add a date input field to set a due date for each todo item.
+// Display the due date next to each todo item.
+// Highlight overdue todos.
+
+
+
+
+
+// Option 11: Add a button to toggle between light and dark modes.
+// Change the app's theme based on the selected mode.
+
+
+const button = document.querySelector<HTMLButtonElement>('#lightDarkMode')!
+
+
+function toggleDarkMode(): void {
+  const isDark = document.body.classList.toggle('dark')
+  button.textContent = isDark ? 'Light mode' : 'Dark mode'
+}
+
+button.addEventListener('click', toggleDarkMode)
+
+

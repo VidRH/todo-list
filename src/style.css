@@ -13,7 +13,15 @@
   --moz-osx-font-smoothing: grayscale;
 
   --body-background-color: #f4f4f4;
+  --body-background-color-dark: #2d2d30;  
+
+
+
   --container-background-color: #fff;
+  --container-background-color-dark: #48484d;
+
+
+
   --container-padding: 20px;
   --container-border-radius: 5px;
   --container-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -92,4 +100,47 @@ h1 {
   font-size: 0.9em;
   margin-top: 5px;
   display: none;
+}
+
+body.dark {
+  background-color: var(--body-background-color-dark);
+}
+
+body.dark .container {
+  background: var(--container-background-color-dark);
+}
+
+body.dark .todo-form button {
+  background: #1c7b32;
+  color: #fff;
+}
+
+body.dark .todo-item {
+  background: #48484d;
+}
+body.dark .todo-item button {
+  background: #a71d2a;
+  color: #fff;
+}
+
+.lightDarkMode {
+  padding: 10px;
+  border: none;
+  background: #344a61;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+
+  transition: background 0.3s;
+}
+
+body.dark .lightDarkMode{
+  background: #323236;
+  border: 1px solid #6a6a71;
+  color: #fff;
+}
+
+body.dark #todo-input {
+  border: 1px solid #6a6a71;
+  background-color: #48484d;
 }
