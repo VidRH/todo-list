@@ -37,6 +37,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition: background 0.3s;
 }
 
 .container {
@@ -60,6 +61,7 @@ h1 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  transition: background 0.3s;
 }
 .todo-form button {
   padding: 10px;
@@ -68,10 +70,12 @@ h1 {
   color: #fff;
   border-radius: 3px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 .todo-list {
   list-style: none;
   padding: 0;
+  transition: background 0.3s;
 }
 .todo-item {
   background: #f9f9f9;
@@ -80,6 +84,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background 0.3s;
 }
 .todo-item button {
   border: none;
@@ -87,12 +92,14 @@ h1 {
   color: #fff;
   border-radius: 3px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 
 .input-error {
   border: 2px solid red;
   background-color: #ffe6e6; /* Optional: Light red background to indicate error */
+  transition: background 0.3s;
 }
 
 #error-message {
@@ -104,23 +111,29 @@ h1 {
 
 body.dark {
   background-color: var(--body-background-color-dark);
+  transition: background 0.3s;
 }
 
 body.dark .container {
   background: var(--container-background-color-dark);
+  transition: background 0.3s;
 }
 
 body.dark .todo-form button {
   background: #1c7b32;
   color: #fff;
+  transition: background 0.3s;
 }
 
 body.dark .todo-item {
   background: #48484d;
+  border-bottom: 1px solid #333;
+  transition: background 0.3s;
 }
 body.dark .todo-item button {
   background: #a71d2a;
   color: #fff;
+  transition: background 0.3s;
 }
 
 .lightDarkMode {
@@ -138,9 +151,46 @@ body.dark .lightDarkMode{
   background: #323236;
   border: 1px solid #6a6a71;
   color: #fff;
+  transition: background 0.3s;
 }
 
 body.dark #todo-input {
   border: 1px solid #6a6a71;
   background-color: #48484d;
+  transition: background 0.3s;
+}
+
+
+.overdue {
+  background-color: #ffcccc; /*rot raaaaaaaagggghh*/
+  transition: background 0.3s;
+}
+
+body.dark .overdue {
+  background-color: #614646; /*dark red raaaaaaaagggghh*/
+  transition: background 0.3s;
+}
+
+.due {
+  background-color: #ccffcc; /*greeb raaaaaaaagggghh*/
+  transition: background 0.3s;
+}
+
+body.dark .due {
+  background-color: #3b563b; /*dark green raaaaaaaagggghh*/
+  transition: background 0.3s;
+}
+
+
+body.dark .date-input {
+  background-color: #525257;
+  border: 1px solid #323236;
+  transition: background 0.3s;
+}
+
+
+.date-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  transition: background 0.3s;
 }
