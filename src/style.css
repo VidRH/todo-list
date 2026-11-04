@@ -95,7 +95,6 @@ h1 {
   transition: background 0.3s;
 }
 
-
 .input-error {
   border: 2px solid red;
   background-color: #ffe6e6; /* Optional: Light red background to indicate error */
@@ -194,3 +193,20 @@ body.dark .date-input {
   border: 1px solid #ccc;
   transition: background 0.3s;
 }
+
+
+
+
+.todo-item .toggle-button {
+  background: #28a745;
+}
+
+body.dark .todo-item .toggle-button {
+  background: #1c7b32;
+}
+
+.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
