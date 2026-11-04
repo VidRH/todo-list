@@ -18,16 +18,6 @@ const dateInput = document.getElementById('date-input') as HTMLInputElement
 
 const errorMessage  = document.getElementById('error-message') as HTMLParagraphElement
 
-
-
-
-
-
-
-
-
-
-
 const addTodo = (text:string,date:number):void => {
   const newTodo: Todo = {
     id: Date.now(),
@@ -53,14 +43,16 @@ const renderTodos = ():void => {
 
   todos.forEach(todo => {
     const li = document.createElement('li');
-    li.className = 'todo-item';
+    li.className = todo.completed ? 'todo-item completed' : 'todo-item';
     li.innerHTML = `
       <span>${todo.text}</span>
       <p>${todo.formattedDate}</p>
-      <button>Remove</button>
+      <button class="toggle-button">${todo.completed ? 'Not Done' : 'Done'}</button>
+      <button class="remove-button">Remove</button>
     `
     addhighlightOverdueClass(li, todo.id);
     addRemoveButtonListener(li, todo.id);
+    addToggleButtonListener(li, todo.id);
     todoList.appendChild(li)
   })
 }
@@ -84,7 +76,7 @@ todoForm.addEventListener('submit', (event: Event) => {
 
 
 const addRemoveButtonListener = (li:HTMLDListElement, id:number):void => {
-  const removeButton = li.querySelector('button')
+  const removeButton = li.querySelector('.remove-button')
   removeButton?.addEventListener('click', () => removeTodo(id))
 }
 
@@ -92,7 +84,6 @@ const removeTodo = (id:number):void => {
   todos = todos.filter(todo => todo.id !== id)
   renderTodos()
 }
-
 
 
 // Option 6: Due Date for Todos:
@@ -114,10 +105,6 @@ const addhighlightOverdueClass = (li:HTMLLIElement, id:number):void => {
   }
 }   
 
-
-
-
-
 // Option 11: Add a button to toggle between light and dark modes.
 // Change the app's theme based on the selected mode.
 
@@ -133,3 +120,24 @@ function toggleDarkMode(): void {
 button.addEventListener('click', toggleDarkMode)
 
 
+// Option 1: Add a button to toggle the completed status of a todo item
+// Function to toggle the completed status of a todo +
+// Add a button to toggle the completed status of a todo item
+
+const addToggleButtonListener = (li:HTMLLIElement, id:number):void => {
+  const toggleButton = li.querySelector('.toggle-button')
+  toggleButton?.addEventListener('click', () => toggleTodo(id))
+}
+
+const toggleTodo = (id:number):void => {
+  const todo = todos.find(todo => todo.id === id)
+  if (todo) {
+    todo.completed = !todo.completed
+    renderTodos()
+  }
+}
+
+// Option 2: Add a button to clear all completed todos
+// Add a button to clear all completed todos
+// Function to clear all completed todos
+// Add a button to toggle all todos

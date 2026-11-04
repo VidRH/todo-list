@@ -35,7 +35,7 @@ test('Add a new todo item with due date and check overdue', async t => {
 test('Add a new todo item with due date and check due', async t => {
     await t
         .typeText('#todo-input', 'New todo item')
-        .typeText('#date-input', '2026-12-29')
+        .typeText('#date-input', '2028-12-29')
         .click('#todo-button')
         .expect(Selector('#todo-list li').withText('New todo item').exists).ok()
         .expect(Selector('#todo-list li').withText('New todo item').hasClass('due')).ok()
