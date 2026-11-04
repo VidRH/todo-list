@@ -21,3 +21,22 @@ test('darkmode toggle', async t => {
         .click('#lightDarkMode')
         .expect(Selector('body').hasClass('dark')).notOk()
 });
+
+
+test('Add a new todo item with due date and check overdue', async t => {
+    await t
+        .typeText('#todo-input', 'New todo item')
+        .typeText('#date-input', '2023-01-01')
+        .click('#todo-button')
+        .expect(Selector('#todo-list li').withText('New todo item').exists).ok()
+        .expect(Selector('#todo-list li').withText('New todo item').hasClass('overdue')).ok()
+});
+
+test('Add a new todo item with due date and check due', async t => {
+    await t
+        .typeText('#todo-input', 'New todo item')
+        .typeText('#date-input', '2026-12-29')
+        .click('#todo-button')
+        .expect(Selector('#todo-list li').withText('New todo item').exists).ok()
+        .expect(Selector('#todo-list li').withText('New todo item').hasClass('due')).ok()
+});

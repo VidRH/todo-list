@@ -5,6 +5,8 @@ interface Todo {
   id:number;
   text:string;
   completed:boolean;
+  formattedDate:string;
+  date:number;
 }
 
 let todos:Todo[] = [];
@@ -12,6 +14,7 @@ let todos:Todo[] = [];
 const todoInput = document.getElementById('todo-input') as HTMLInputElement
 const todoForm = document.querySelector('.todo-form') as HTMLFormElement
 const todoList = document.getElementById('todo-list') as HTMLUListElement
+const dateInput = document.getElementById('date-input') as HTMLInputElement
 
 const errorMessage  = document.getElementById('error-message') as HTMLParagraphElement
 
@@ -25,10 +28,16 @@ const errorMessage  = document.getElementById('error-message') as HTMLParagraphE
 
 
 
-const addTodo = (text:string):void => {
+const addTodo = (text:string,date:number):void => {
   const newTodo: Todo = {
     id: Date.now(),
     text: text,
+    date: date,
+    formattedDate: new Date(date).toLocaleDateString("ja-JP", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }),
     completed: false,
   }
   todos.push(newTodo)
@@ -47,8 +56,10 @@ const renderTodos = ():void => {
     li.className = 'todo-item';
     li.innerHTML = `
       <span>${todo.text}</span>
+      <p>${todo.formattedDate}</p>
       <button>Remove</button>
     `
+    addhighlightOverdueClass(li, todo.id);
     addRemoveButtonListener(li, todo.id);
     todoList.appendChild(li)
   })
@@ -62,9 +73,12 @@ todoForm.addEventListener('submit', (event: Event) => {
 
   const text = todoInput.value.trim();
 
+  const date = dateInput.valueAsNumber;
+
   if (text !== '') {
-    addTodo(text);
+    addTodo(text, date);
     todoInput.value = '' //clears the input field after adding 
+    dateInput.value = ''
   }
 })
 
@@ -85,6 +99,20 @@ const removeTodo = (id:number):void => {
 // Add a date input field to set a due date for each todo item.
 // Display the due date next to each todo item.
 // Highlight overdue todos.
+
+const addhighlightOverdueClass = (li:HTMLLIElement, id:number):void => {
+  const todo = todos.find(todo => todo.id === id);
+  if (todo) {
+    const currentDate = new Date();
+    const dueDate = new Date(todo.date);
+    if (dueDate < currentDate) {
+      li.classList.add('overdue'); // Add a class to highlight overdue todos
+    }
+    else {
+      li.classList.add('due'); // Remove the class if not overdue
+    }
+  }
+}   
 
 
 
