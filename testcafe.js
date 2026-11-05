@@ -51,3 +51,15 @@ test('Add a new todo item and toggle completion', async t => {
         .click(Selector('#todo-list > li > button').withText('Not Done'))
         .expect(Selector('#todo-list li').withText('New todo item').hasClass('completed')).notOk()
 });
+
+
+test('Add a new todo item and clear completed', async t => {
+    await t
+        .typeText('#todo-input', 'New todo item')
+        .click('#todo-button')
+        .typeText('#todo-input', 'C`venash Vishneri')
+        .click('#todo-button')
+        .click(Selector('#todo-list > li > button').withText('Done'))
+        .click('#clear-completed')
+        .expect(Selector('#todo-list li').withText('New todo item').exists).notOk()
+});
