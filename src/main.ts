@@ -16,7 +16,7 @@ const todoForm = document.querySelector('.todo-form') as HTMLFormElement
 const todoList = document.getElementById('todo-list') as HTMLUListElement
 const dateInput = document.getElementById('date-input') as HTMLInputElement
 
-const errorMessage  = document.getElementById('error-message') as HTMLParagraphElement
+//const errorMessage  = document.getElementById('error-message') as HTMLParagraphElement
 
 const addTodo = (text:string,date:number):void => {
   const newTodo: Todo = {
@@ -75,7 +75,7 @@ todoForm.addEventListener('submit', (event: Event) => {
 })
 
 
-const addRemoveButtonListener = (li:HTMLDListElement, id:number):void => {
+const addRemoveButtonListener = (li:HTMLLIElement, id:number):void => {
   const removeButton = li.querySelector('.remove-button')
   removeButton?.addEventListener('click', () => removeTodo(id))
 }
@@ -141,3 +141,12 @@ const toggleTodo = (id:number):void => {
 // Add a button to clear all completed todos
 // Function to clear all completed todos
 // Add a button to toggle all todos
+
+const clearCompletedButton = document.getElementById('clear-completed') as HTMLButtonElement
+
+const clearCompleted = ():void => {
+  todos = todos.filter(todo => !todo.completed)
+  renderTodos()
+}
+
+clearCompletedButton.addEventListener('click', clearCompleted)

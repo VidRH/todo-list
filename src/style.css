@@ -210,3 +210,15 @@ body.dark .todo-item .toggle-button {
   opacity: 0.6;
 }
 
+.clear-completed {
+  padding: 10px;
+  border: none;
+  background: #dc3545;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+body.dark .clear-completed {
+  background: #610f17;
+}
